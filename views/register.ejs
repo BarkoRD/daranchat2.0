@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Login and Register</title>
+  <link rel="stylesheet" href="login.css" />
+</head>
+
+<body>
+ <form action="/register" method="post">
+  <div class="pbox registerpbox"><p>Bienvenido a la pagina de registro de <a href="#"><span class="direccion">chat.daranhub.com</span></a> para registrarse coloque el nombre con el que se le vera en el chat y un codigo de acceso privado. Si ya tiene una cuenta con nosotros <a href="/login">Inicia Sesion</a></p></div>
+  <div class="inputs">
+  <input type="text"   class="ip-reg-name inputaccescode" name="name" placeholder="Nombre Visible">
+  <input type="text"   class="ip-reg-accescode inputaccescode" name="accesscode" placeholder="Codigo De Acceso">
+</div>
+  <input type="submit" class="ip-reg-submit registersubmit" value="Registrarse">
+ </form>
+ 
+  <div class="error-message" style="color: #fff;"><% if (error) { %><%= error %><% } %></div>
+
+
+
+
+
+
+
+</body>
+<script src="app.js" type="text/javascript"></script>
+</html>

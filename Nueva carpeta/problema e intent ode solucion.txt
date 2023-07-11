@@ -1,0 +1,1 @@
+guardar el chat en el server y luego mostrarselo

@@ -1,0 +1,4 @@
+hacerlo con base de datos usar el id 
+que tienen en la base de datos 
+y ponerselo al mensaje y asi el javascript
+le ponga eso hacerlo asi pue

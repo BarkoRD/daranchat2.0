@@ -1,0 +1,128 @@
+:root {
+
+    --loginSubmitBackgroundColor: #ea4c88;
+    --loginSubmitColor: #eee;
+    --loginSubmitHoverBackgroundColor: #d44179;
+}
+
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+}
+
+form {
+    border-radius: 10px;
+    border: 2px solid #173a36;
+    margin: auto;
+    margin-top: 150px;
+    background-color: #5C8984;
+    width: 350px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+form input {
+    margin: 15px;
+}
+
+.inputaccescode {
+    background-color: #364f4c;
+    color: #fff;
+    border: none;
+    height: 25px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.inputaccescode::placeholder {
+
+    color: rgb(255, 200, 255);
+    opacity: 0.8;
+    
+
+}
+
+form input[type="submit"] {
+
+    border: 0;
+
+    margin: 0;
+    outline: 0;
+
+    font-size: 10px;
+
+    border-radius: 5px;
+    padding: 1rem;
+    background-color: var(--loginSubmitBackgroundColor);
+    color: var(--loginSubmitColor);
+
+    text-transform: uppercase;
+
+}
+
+
+form input[type="submit"]:hover{
+    opacity: 0.8;
+    cursor: pointer;
+    
+}
+
+
+.pbox {
+    margin-bottom: 10px;
+    padding-top: 20px;
+    background-color: #74a8a2;
+    width: 93%;
+    border-radius: 10px;
+    height: 100px;
+}
+
+.pbox p span {
+    color: #B91EC4;
+}
+
+.pbox p a {
+    text-decoration: none;
+}
+
+.pbox p a:hover {
+    opacity: 0.8;
+}
+
+p {
+    font-family: sans-serif;
+    text-align: center;
+    margin-bottom: 25px;
+
+}
+
+/* ;
+registerr zone
+*/
+
+.inputs input{
+    margin: 0px 0px 25px 0px;
+
+
+}
+
+.registerpbox{
+    height: 130px;
+    margin-bottom: 25px;
+
+}
+
+.registersubmit{
+    font-size: 8px !important;
+    margin-bottom: 15px !important;
+}

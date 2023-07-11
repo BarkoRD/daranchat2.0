@@ -1,0 +1,10 @@
+que se pueda ver quienes estan online
+que se pueda ver quienes estan escribiendo
+
+para evitar el bug de recargar la pagina
+hacer que se cree un array en el servidor cuando
+se recargue la pagina en ese array guardarlo 
+con un id la cual sera el nombre de usuario de 
+la persona y en vez de mostrarle el array se le 
+mostrar ESE array con el nombre de usuario de 
+la persona
