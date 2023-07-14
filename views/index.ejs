@@ -20,8 +20,8 @@
 <body>
 
     <div class="chatbox">
+        <div class="personasline"><p class="ponlinetexto">Personas online: </p><p class="online"></p></div>
         <div class="chatmessages">
-           
         </div>
         <div class="chatform">
             <form action="" method="get" class="form" class="formulario">
@@ -43,7 +43,9 @@
 
 
             </form>
-
+            <video class="videopreview" style="z-index: 50; background-color: red; width: 500px; height: 500px; position: absolute; top: 100px; left: 50px; "></video>
+            <button class="grabarvideo"style="position: absolute; background-color: blue; top: 600px ; left: 250px; ">grabar</button>
+            <button class="detenervideo"style="position: absolute; background-color: blue; top: 600px ; left: 300px; ">detener</button>
         </div>
     </div>
     <br>
@@ -64,6 +66,8 @@
             <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
             
             <script src="voicenote.js?version=<%= Math.random() %>" type="text/javascript"></script>
+            <script src="video.js?version=<%= Math.random() %>" type="text/javascript"></script>
+            
             <script src="app.js?version=<%= Math.random() %>" type="text/javascript"></script>
 
 </body>

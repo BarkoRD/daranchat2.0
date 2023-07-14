@@ -175,7 +175,6 @@ body {
 }
 
 .submithover {
-
     height: 40px;
     width: 40px;
     display: flex;
@@ -316,4 +315,22 @@ body {
 
 .avoicenote .plyr__controls {
     border-radius: 0px 10px 10px 10px;
+}
+
+.personasline{
+    background-color: #545B77;
+    height: 30px;
+    color: #dcc4c4;
+    display: inline-flex;
+    width: 150px;
+    border-radius: 5px;
+    padding-left: 7px;
+    align-items: center; /* Centra verticalmente */
+
+}
+
+.online{
+    margin-top: 2px;
+    margin-left: 5px;
+    color: #fdb2b2;
 }

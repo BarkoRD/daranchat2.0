@@ -30,15 +30,32 @@ io.use((socket, next) => {
     sessionMiddleware(socket.request, {}, next);
   });
 
-io.on('connection',(socket)=>{
-    console.log('New Connection:', socket.id)
-    
+  let onlineUsers = 0;
+
+  io.on('connection', (socket) => {
+    console.log('New Connection:', socket.id);
+    socket.emit('updateOnlineUsers', onlineUsers);
+  
+    // Incrementar el contador de usuarios en línea
+    onlineUsers++;
+    io.emit('updateOnlineUsers', onlineUsers);
+  
+    socket.on('disconnect', () => {
+      console.log('User Disconnected:', socket.id);
+  
+      // Decrementar el contador de usuarios en línea
+      onlineUsers--;
+      io.emit('updateOnlineUsers', onlineUsers);
+    });
+  
 
     const sessionweb = socket.request.session;
     
 
     socket.emit('loadMessages', messages)
     socket.on('client:newmessage', message => {
+        if(sessionweb.loggedin){
+      
         let msgWithOwner = {
             owner: sessionweb.name,
             message: message.message,
@@ -50,7 +67,13 @@ io.on('connection',(socket)=>{
         messages.push(msgWithOwner);
 
         io.sockets.emit('server:newmessage', msgWithOwner);
+    }else{
+
+        io.sockets.emit('server:reload'); // Enviar evento de recarga
+  }
     });
+
+ 
 
     socket.on('client:newaudio', audio => {
         let audioWithOwner = {
@@ -80,6 +103,7 @@ io.on('connection',(socket)=>{
 app.get('/',(req,res)=>{
     res.redirect('/index')
 })
+
 app.get('/index',async (req,res)=>{
     if (req.session.loggedin) {
         let error = ''

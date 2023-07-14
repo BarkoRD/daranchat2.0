@@ -3,10 +3,15 @@ const input = document.querySelector('.input')
 const form = document.querySelector('.form')
 const chatbox = document.querySelector('.chatmessages')
 const formsubmit = document.querySelector('.formsubmit')
-
+const online = document.querySelector('.online')
 const textarea = document.querySelector('.forminput')
 
+history.pushState({}, '', '/');
 
+
+socket.on('updateOnlineUsers', (onlineUsers) => {
+  online.innerHTML = onlineUsers;
+});
 
 const tourl = (text) => {
     const link = /(https?:\/\/[^\s]+)|(www\.[^\s]+)|(?!www\.\S+\.\S{2,})((\b\w+\b\.\S{2,})\b)/g;
@@ -76,7 +81,9 @@ const sendMessage = (message, owner) => {
 }
 
 
-
+socket.on('server:reload', () => {
+    window.location.reload(); // Actualizar la página en el cliente
+  });
 
 
 const appendMessage = message => {
@@ -122,6 +129,7 @@ socket.on('server:newmessage', message => {
 socket.on('loadMessages', messages => {
     loadMessages(messages)
     console.log(messages)
+
 })
 
 // const loadMessages = (messages) => {
