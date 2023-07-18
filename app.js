@@ -73,7 +73,6 @@ io.use((socket, next) => {
   }
     });
 
- 
 
     socket.on('client:newaudio', audio => {
         let audioWithOwner = {
@@ -88,6 +87,21 @@ io.use((socket, next) => {
         messages.push(audioWithOwner);
 
         io.sockets.emit('server:newaudio', audioWithOwner);
+    });
+
+    socket.on('client:newvideo', video => {
+        let videoWithOwner = {
+            video: video.video,
+            owner: sessionweb.name,
+            id: video.id,
+            type: 'video'
+            
+        } 
+        
+        console.log(videoWithOwner)
+        messages.push(videoWithOwner);
+
+        io.sockets.emit('server:newvideo', videoWithOwner);
     });
 
     socket.on('client:requestusername',()=>{

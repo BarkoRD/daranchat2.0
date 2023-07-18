@@ -75,60 +75,6 @@ const appendAudio = (audio,id,owner) => {
   }
   recordingsList.appendChild(div);
 };
-// AAAAAAARRRRRREEEEEGGGGGLLLAAAAARRRR BUG DE QUE NO SE VE LA DURACION SI NO DOY CLICK
-// AAAAAAARRRRRREEEEEGGGGGLLLAAAAARRRR BUG DE QUE NO SE VE LA DURACION SI NO DOY CLICK
-// AAAAAAARRRRRREEEEEGGGGGLLLAAAAARRRR BUG DE QUE NO SE VE LA DURACION SI NO DOY CLICK
-// AAAAAAARRRRRREEEEEGGGGGLLLAAAAARRRR BUG DE QUE NO SE VE LA DURACION SI NO DOY CLICK
-// AAAAAAARRRRRREEEEEGGGGGLLLAAAAARRRR BUG DE QUE NO SE VE LA DURACION SI NO DOY CLICK
-// AAAAAAARRRRRREEEEEGGGGGLLLAAAAARRRR BUG DE QUE NO SE VE LA DURACION SI NO DOY CLICK
-// AAAAAAARRRRRREEEEEGGGGGLLLAAAAARRRR BUG DE QUE NO SE VE LA DURACION SI NO DOY CLICK
-// AAAAAAARRRRRREEEEEGGGGGLLLAAAAARRRR BUG DE QUE NO SE VE LA DURACION SI NO DOY CLICK     
-
-
-//   Si deseas que se muestre la duración del audio sin tener que reproducirlo, puedes utilizar el evento 'loadedmetadata' del reproductor Plyr para obtener la duración y actualizar el elemento correspondiente en la interfaz.
-
-// Aquí tienes un ejemplo de cómo hacerlo:
-
-  // const player = new Plyr(audio, {
-  //   speed: {
-  //     selected: 1,
-  //     options: [1, 1.5, 2]
-  //   },
-  //   controls: ['play', 'progress', 'duration', 'settings']
-  // });
-  
-  // player.on('loadedmetadata', () => {
-  //   const durationElement = document.querySelector('.plyr__time--duration');
-  //   const duration = player.duration;
-  //   if (durationElement && duration) {
-  //     durationElement.textContent = formatTime(duration);
-  //   }
-  // });
-  
-  // // Función para formatear el tiempo en formato hh:mm:ss
-  // function formatTime(time) {
-  //   const hours = Math.floor(time / 3600);
-  //   const minutes = Math.floor((time % 3600) / 60);
-  //   const seconds = Math.floor(time % 60);
-  //   return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-  // }
-  
-//   En este ejemplo, estamos escuchando el evento 'loadedmetadata' del reproductor Plyr, que se dispara cuando se obtienen los metadatos del audio, incluida la duración. En el controlador de eventos, obtenemos el elemento correspondiente a la duración ('.plyr__time--duration') y actualizamos su contenido con el valor formateado de la duración.
-
-// Asegúrate de tener un elemento en tu HTML con la clase 'plyr__time--duration' para mostrar la duración del audio.
-
-// Con esta solución, la duración del audio se mostrará sin necesidad de reproducirlo previamente.
-
-// AAAAAAARRRRRREEEEEGGGGGLLLAAAAARRRR BUG DE QUE NO SE VE LA DURACION SI NO DOY CLICK
-// AAAAAAARRRRRREEEEEGGGGGLLLAAAAARRRR BUG DE QUE NO SE VE LA DURACION SI NO DOY CLICK
-// AAAAAAARRRRRREEEEEGGGGGLLLAAAAARRRR BUG DE QUE NO SE VE LA DURACION SI NO DOY CLICK
-// AAAAAAARRRRRREEEEEGGGGGLLLAAAAARRRR BUG DE QUE NO SE VE LA DURACION SI NO DOY CLICK
-// AAAAAAARRRRRREEEEEGGGGGLLLAAAAARRRR BUG DE QUE NO SE VE LA DURACION SI NO DOY CLICK
-// AAAAAAARRRRRREEEEEGGGGGLLLAAAAARRRR BUG DE QUE NO SE VE LA DURACION SI NO DOY CLICK
-// AAAAAAARRRRRREEEEEGGGGGLLLAAAAARRRR BUG DE QUE NO SE VE LA DURACION SI NO DOY CLICK
-// AAAAAAARRRRRREEEEEGGGGGLLLAAAAARRRR BUG DE QUE NO SE VE LA DURACION SI NO DOY CLICK
-
-
 
 // Evento clic del botón "Detener grabación"
 
@@ -192,4 +138,60 @@ startButton.addEventListener('click', async (e) => {
   mediaRecorder.start();
 
 });
+
+
+
+// AAAAAAARRRRRREEEEEGGGGGLLLAAAAARRRR BUG DE QUE NO SE VE LA DURACION SI NO DOY CLICK
+// AAAAAAARRRRRREEEEEGGGGGLLLAAAAARRRR BUG DE QUE NO SE VE LA DURACION SI NO DOY CLICK
+// AAAAAAARRRRRREEEEEGGGGGLLLAAAAARRRR BUG DE QUE NO SE VE LA DURACION SI NO DOY CLICK
+// AAAAAAARRRRRREEEEEGGGGGLLLAAAAARRRR BUG DE QUE NO SE VE LA DURACION SI NO DOY CLICK
+// AAAAAAARRRRRREEEEEGGGGGLLLAAAAARRRR BUG DE QUE NO SE VE LA DURACION SI NO DOY CLICK
+// AAAAAAARRRRRREEEEEGGGGGLLLAAAAARRRR BUG DE QUE NO SE VE LA DURACION SI NO DOY CLICK
+// AAAAAAARRRRRREEEEEGGGGGLLLAAAAARRRR BUG DE QUE NO SE VE LA DURACION SI NO DOY CLICK
+// AAAAAAARRRRRREEEEEGGGGGLLLAAAAARRRR BUG DE QUE NO SE VE LA DURACION SI NO DOY CLICK     
+
+
+//   Si deseas que se muestre la duración del audio sin tener que reproducirlo, puedes utilizar el evento 'loadedmetadata' del reproductor Plyr para obtener la duración y actualizar el elemento correspondiente en la interfaz.
+
+// Aquí tienes un ejemplo de cómo hacerlo:
+
+  // const player = new Plyr(audio, {
+  //   speed: {
+  //     selected: 1,
+  //     options: [1, 1.5, 2]
+  //   },
+  //   controls: ['play', 'progress', 'duration', 'settings']
+  // });
+  
+  // player.on('loadedmetadata', () => {
+  //   const durationElement = document.querySelector('.plyr__time--duration');
+  //   const duration = player.duration;
+  //   if (durationElement && duration) {
+  //     durationElement.textContent = formatTime(duration);
+  //   }
+  // });
+  
+  // // Función para formatear el tiempo en formato hh:mm:ss
+  // function formatTime(time) {
+  //   const hours = Math.floor(time / 3600);
+  //   const minutes = Math.floor((time % 3600) / 60);
+  //   const seconds = Math.floor(time % 60);
+  //   return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  // }
+  
+//   En este ejemplo, estamos escuchando el evento 'loadedmetadata' del reproductor Plyr, que se dispara cuando se obtienen los metadatos del audio, incluida la duración. En el controlador de eventos, obtenemos el elemento correspondiente a la duración ('.plyr__time--duration') y actualizamos su contenido con el valor formateado de la duración.
+
+// Asegúrate de tener un elemento en tu HTML con la clase 'plyr__time--duration' para mostrar la duración del audio.
+
+// Con esta solución, la duración del audio se mostrará sin necesidad de reproducirlo previamente.
+
+// AAAAAAARRRRRREEEEEGGGGGLLLAAAAARRRR BUG DE QUE NO SE VE LA DURACION SI NO DOY CLICK
+// AAAAAAARRRRRREEEEEGGGGGLLLAAAAARRRR BUG DE QUE NO SE VE LA DURACION SI NO DOY CLICK
+// AAAAAAARRRRRREEEEEGGGGGLLLAAAAARRRR BUG DE QUE NO SE VE LA DURACION SI NO DOY CLICK
+// AAAAAAARRRRRREEEEEGGGGGLLLAAAAARRRR BUG DE QUE NO SE VE LA DURACION SI NO DOY CLICK
+// AAAAAAARRRRRREEEEEGGGGGLLLAAAAARRRR BUG DE QUE NO SE VE LA DURACION SI NO DOY CLICK
+// AAAAAAARRRRRREEEEEGGGGGLLLAAAAARRRR BUG DE QUE NO SE VE LA DURACION SI NO DOY CLICK
+// AAAAAAARRRRRREEEEEGGGGGLLLAAAAARRRR BUG DE QUE NO SE VE LA DURACION SI NO DOY CLICK
+// AAAAAAARRRRRREEEEEGGGGGLLLAAAAARRRR BUG DE QUE NO SE VE LA DURACION SI NO DOY CLICK
+
 

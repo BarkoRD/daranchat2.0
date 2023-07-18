@@ -1,17 +1,40 @@
 
+// DECLARACIONES DE ELEMENTOS
+
 const input = document.querySelector('.input')
 const form = document.querySelector('.form')
 const chatbox = document.querySelector('.chatmessages')
 const formsubmit = document.querySelector('.formsubmit')
 const online = document.querySelector('.online')
 const textarea = document.querySelector('.forminput')
+const previewcamera = document.querySelector('.previewofcamera')
+
+camera.addEventListener('click',(e)=>{
+ 
+    previewcamera.classList.remove('animacionadio')
+    previewcamera.classList.remove('desactivado2')
+    previewcamera.classList.add('animacion')
+})
+
+camera2.addEventListener('click',(e)=>{
+ 
+    previewcamera.classList.remove('animacion')
+
+    previewcamera.classList.add('animacionadio')
+})
+
+
+// BEAUTIFUL URLS
 
 history.pushState({}, '', '/');
 
+// MANEJA EL EVENTO DE SALIDA Y ENTRA DE USUARIOS
 
 socket.on('updateOnlineUsers', (onlineUsers) => {
   online.innerHTML = onlineUsers;
 });
+
+
 
 const tourl = (text) => {
     const link = /(https?:\/\/[^\s]+)|(www\.[^\s]+)|(?!www\.\S+\.\S{2,})((\b\w+\b\.\S{2,})\b)/g;
@@ -132,25 +155,7 @@ socket.on('loadMessages', messages => {
 
 })
 
-// const loadMessages = (messages) => {
-//     messages.forEach((message) => {
-//       if (message.type === "message") {
-//         // Mensaje de texto
-//         appendMessage({
-//           id: message.id,
-//           message: message.message,
-//           owner: message.owner,
-//         });
-//       } else if (message.type === "audio") {
-//         // Mensaje de audio
-//         appendAudio({
-//           id: message.id,
-//           audio: message.audio,
-//           owner: message.owner,
-//         });
-//       }
-//     });
-//   };
+
 
 const loadMessages = message => {
     message.forEach(e => {
@@ -171,12 +176,31 @@ const loadMessages = message => {
                     audiobox.appendChild(source);
                 
                     // Agrega el elemento de audio al DOM
-                  appendAudio(audiobox,e.id)
+                    appendAudio(audiobox,e.id,e.owner)
                     
                 
               
         } else if (e.type === 'message') {
             appendMessage(e);
+
+        } else if (e.type === 'video') {
+            const videoBlob = new Blob([e.video], { type: 'video/webm' });
+            const videoURL = URL.createObjectURL(videoBlob);
+          
+                // Crea un elemento "video vacio con los controles activados"
+                const videoBox = document.createElement('video');
+                videoBox.classList.add('videonote', 'plyr');
+                videoBox.src = videoURL;
+                videoBox.controls = true;
+                videoBox.id= 'player'
+              
+               // Crea un contenedor para el video
+                const videoContainer = document.createElement('div');
+                videoContainer.classList.add('video-container');
+                videoContainer.appendChild(videoBox);
+            
+                // Agrega el elemento de audio al DOM
+                appendVideo(videoContainer,e.id,e.owner)
         }
     });
 }

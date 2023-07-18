@@ -17,23 +17,51 @@
     <title>Document</title>
 </head>
 
-<body>
+<body style="position: relative;">
+    <!-- CHAT BOX ALMACENA ABSOLUTAMENTE TODO -->
 
     <div class="chatbox">
-        <div class="personasline"><p class="ponlinetexto">Personas online: </p><p class="online"></p></div>
+        <div class="personasline">
+            <p class="ponlinetexto">Personas online: </p>
+            <p class="online"></p>
+        </div>
+        
+        <div class="previewofcamera desactivado2">
+            <video class="videopreview"></video>
+            <div class="cameracontrols">
+               <div>
+                    <div class="videobuttonhover">
+                        <button class="videobutton grabarvideo "><img src="./camera.png" alt="grabar"></button>
+                        <button class="videobutton detenervideo desactivado"><img src="./camerared.png" alt="grabar"></button>
+                    </div>
+                </div>
+                <div>
+                <div class="photobuttonhover">
+                <button class="capturafoto"><img src="./camera1.png" alt="grabar"></button>
+                </div>
+            </div>
+            </div>
+
+
+        </div>
+        <!-- CAJA QUE ALMACENA LOS MENSAJES, AUDIOS, VIDEOS, FOTOS -->
         <div class="chatmessages">
         </div>
+
+        <!-- INPUT DE MENSAJES -->
         <div class="chatform">
             <form action="" method="get" class="form" class="formulario">
                 <div class="textareacontainer">
                     <textarea class="input forminput" name="mensaje" placeholder="Escribir un mensaje"></textarea>
                 </div>
+                <!-- BOTN DE NOTAS DE VOZ -->
                 <div class="audio">
                     <div class="audiohover">
-                    <button class="nota grabarnota "><img src="./record.png" alt="grabar"></button>
-                    <button class="nota cortarnota desactivado"><img src="./recording.png" alt="grabar"></button>
+                        <button class="nota grabarnota "><img src="./record.png" alt="grabar"></button>
+                        <button class="nota cortarnota desactivado"><img src="./recording.png" alt="grabar"></button>
                     </div>
                 </div>
+                <!-- BOTN DE NOTAS DE ENVIO DE MENSAJES -->
                 <div class="submitcontainer">
                     <div class="submithover">
                         <input type="submit" value="" class="formsubmit">
@@ -43,9 +71,10 @@
 
 
             </form>
-            <video class="videopreview" style="z-index: 50; background-color: red; width: 500px; height: 500px; position: absolute; top: 100px; left: 50px; "></video>
-            <button class="grabarvideo"style="position: absolute; background-color: blue; top: 600px ; left: 250px; ">grabar</button>
-            <button class="detenervideo"style="position: absolute; background-color: blue; top: 600px ; left: 300px; ">detener</button>
+            <button class="camera camera1">soycamera1</button>
+            <button class="camera camera2">soycamera2</button>
+
+
         </div>
     </div>
     <br>
@@ -64,10 +93,10 @@
             <script src="clientid.js"></script>
             <script src="/socket.io/socket.io.min.js"></script>
             <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
-            
+            <script src="photo.js?version=<%= Math.random() %>" type="text/javascript"></script>
             <script src="voicenote.js?version=<%= Math.random() %>" type="text/javascript"></script>
             <script src="video.js?version=<%= Math.random() %>" type="text/javascript"></script>
-            
+<!-- sadads -->
             <script src="app.js?version=<%= Math.random() %>" type="text/javascript"></script>
 
 </body>
