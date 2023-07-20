@@ -89,6 +89,21 @@ io.use((socket, next) => {
         io.sockets.emit('server:newaudio', audioWithOwner);
     });
 
+    socket.on('client:newphoto', photo => {
+        let photoWithOwner = {
+            photo: photo.photo,
+            owner: sessionweb.name,
+            id: photo.id,
+            type: 'photo'
+            
+        } 
+        
+        console.log(photoWithOwner)
+        messages.push(photoWithOwner);
+
+        io.sockets.emit('server:newphoto', photoWithOwner);
+    });
+
     socket.on('client:newvideo', video => {
         let videoWithOwner = {
             video: video.video,

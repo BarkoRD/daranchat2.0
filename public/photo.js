@@ -1,48 +1,88 @@
- // Tu código JavaScript aquí
- const capturePhotoButton = document.querySelector('.capturafoto');
- const photoElement = document.querySelector('.fotopreview');
+const capturePhotoButton = document.querySelector('.capturafoto');
+
+capturePhotoButton.addEventListener('click', async (e) => {
+  e.preventDefault();
+
+  // Pedir permiso de cámara
+  const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+
+  // Mostrar la vista previa de la cámara en el elemento de video
+  const videoElement = document.createElement('video');
+  videoElement.srcObject = stream;
+  videoElement.play();
+
+  // Obtener la pista de video para usar con la API ImageCapture
+  const track = stream.getVideoTracks()[0];
+  
+  const imageCapture = new ImageCapture(track);
+  
+
+  // Capturar una foto fija del video utilizando ImageCapture
+  const photoBlob = await imageCapture.takePhoto();
+
+  let clientId = localStorage.getItem('clientId');
+
+  const sendPhoto = (photo, owner, id) => {
+    socket.emit('client:newphoto', {
+      photo,
+      owner,
+      id
+    })
+  }
+  sendPhoto(photoBlob,'elpepe',clientId)
+  
+  // Detener el video y liberar la cámara
+  track.stop();
+});
 
 
- // Evento clic del botón "Capturar foto"
- capturePhotoButton.addEventListener('click', async (e) => {
-   e.preventDefault();
+socket.on('server:newphoto', photo =>{
+  // Convertir el blob de la foto en una URL de objeto
+  const photoBlob = new Blob([photo.photo], { type: 'image/jpeg' });
+  const photoURL = URL.createObjectURL(photoBlob);
 
-   // Pedir permiso de cámara
-   const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+  // Crear un elemento de imagen con la foto capturada
+  const photoBox = document.createElement('img');
+  photoBox.classList.add('photonote');
+  photoBox.src = photoURL;
 
-   // Mostrar la vista previa de la cámara en el elemento de imagen
-   const videoElement = document.createElement('video');
-   videoElement.srcObject = stream;
-   videoElement.play();
-   videoElement.addEventListener('loadedmetadata', () => {
-     const canvas = document.createElement('canvas');
-     canvas.width = videoElement.videoWidth;
-     canvas.height = videoElement.videoHeight;
+  // Crear un contenedor para la foto
+  const photoContainer = document.createElement('div');
+  photoContainer.classList.add('photo-container');
+  photoContainer.appendChild(photoBox);
 
-     // Capturar una imagen fija del video en el canvas
-     const context = canvas.getContext('2d');
-     context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+  appendPhoto(photoContainer,photo.owner,photo.id)
 
-     // Convertir el canvas en una imagen
-     const photoURL = canvas.toDataURL();
+})
 
-     // Crear un elemento de imagen con la foto capturada
-     const photoBox = document.createElement('img');
-     photoBox.classList.add('photonote');
-     photoBox.src = photoURL;
+const appendPhoto = (photo,id,owner) => {
+  let clientId = localStorage.getItem('clientId');
+  const photomessage = document.createElement('div');
+  const div = document.createElement('div');
+  const ownername = document.createElement('div');
+  div.classList.add('message');
+ 
+  ownername.innerHTML = `${owner}`
 
-     // Crear un contenedor para la foto
-     const photoContainer = document.createElement('div');
-     photoContainer.classList.add('photo-container');
-     photoContainer.appendChild(photoBox);
+  
+  if (id !== clientId) {
+    ownername.classList.add('messageowner');
+    photomessage.appendChild(photo);
+    photomessage.classList.add('aphotonote')
+    div.appendChild(ownername)
+    div.appendChild(photomessage)
 
-     // Agregar el contenedor de la foto al DOM
-     const div = document.createElement('div');
-     div.classList.add('message');
-     div.appendChild(photoContainer);
-     recordingsList.appendChild(div);
 
-     // Detener el video y liberar la cámara
-     videoElement.srcObject.getTracks().forEach(track => track.stop());
-   });
- });
+  } else {
+
+    ownername.classList.add('yourname');
+
+    photomessage.classList.add('your')
+    photomessage.appendChild(photo);
+    div.appendChild(ownername)
+    div.appendChild(photomessage)
+
+
+  }
+  recordingsList.appendChild(div);
+};

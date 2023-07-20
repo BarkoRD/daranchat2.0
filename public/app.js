@@ -159,6 +159,7 @@ socket.on('loadMessages', messages => {
 
 const loadMessages = message => {
     message.forEach(e => {
+      
         if (e.type === 'audio') {
                 const audioBlob = new Blob([e.audio], { type: 'audio/mpeg' });
                 const audioURL = URL.createObjectURL(audioBlob);
@@ -184,23 +185,39 @@ const loadMessages = message => {
             appendMessage(e);
 
         } else if (e.type === 'video') {
-            const videoBlob = new Blob([e.video], { type: 'video/webm' });
-            const videoURL = URL.createObjectURL(videoBlob);
+                const videoBlob = new Blob([e.video], { type: 'video/webm' });
+                const videoURL = URL.createObjectURL(videoBlob);
           
-                // Crea un elemento "video vacio con los controles activados"
+            
                 const videoBox = document.createElement('video');
                 videoBox.classList.add('videonote', 'plyr');
                 videoBox.src = videoURL;
                 videoBox.controls = true;
                 videoBox.id= 'player'
               
-               // Crea un contenedor para el video
+        
                 const videoContainer = document.createElement('div');
                 videoContainer.classList.add('video-container');
                 videoContainer.appendChild(videoBox);
             
-                // Agrega el elemento de audio al DOM
+            
                 appendVideo(videoContainer,e.id,e.owner)
+        }else if (e.type === 'photo'){
+
+                const photoBlob = new Blob([e.photo], { type: 'image/jpeg' });
+                const photoURL = URL.createObjectURL(photoBlob);
+
+             
+                const photoBox = document.createElement('img');
+                photoBox.classList.add('photonote');
+                photoBox.src = photoURL;
+
+             
+                const photoContainer = document.createElement('div');
+                photoContainer.classList.add('photo-container');
+                photoContainer.appendChild(photoBox);
+
+                appendPhoto(photoContainer,e.id,e.owner)
         }
     });
 }

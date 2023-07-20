@@ -374,6 +374,12 @@ body {
 
 }
 
+.lefote{
+    width: 500px;
+    height: 500px;
+    background-color: red;
+}
+
 .videobutton {
 
     position: absolute;
