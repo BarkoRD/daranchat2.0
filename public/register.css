@@ -44,10 +44,23 @@ form {
 
 form h1 {
   text-align: center;
-  font-size: 24px;
+  font-size: 45px;
   font-weight: 500;
   line-height: normal;
-  margin-block: 20px 50px;
+  margin-block: 20px 20px;
+}
+
+.registrate {
+  margin: 0px;
+  margin: auto;
+
+  display: inline;
+  width: 350px;
+  text-align: center;
+  margin-block: 5px 80px;
+  font-size: 20px;
+  opacity: 0.9;
+
 }
 
 form div {
@@ -71,11 +84,30 @@ form div input[type="password"] {
   transition: border ease-in 0.12s, box-shadow ease-in 0.12s;
 }
 
+form div input[type="text"] {
+    color: black;
+    height: 45px;
+    width: 100%;
+    border-radius: 6px;
+    border: none;
+    padding: 10px;
+    margin-block: 2px 40px;
+    font-size: 18px;
+    border: 1px solid #cad3dc;
+    transition: border ease-in 0.12s, box-shadow ease-in 0.12s;
+  }
+
 form div input[type="password"]:focus {
   outline: none;
   border-color: #61d4d5;
   box-shadow: 0 0 8px #61d3d582;
 }
+
+form div input[type="text"]:focus {
+    outline: none;
+    border-color: #61d4d5;
+    box-shadow: 0 0 8px #61d3d582;
+  }
 
 form div label {
   align-self: flex-start;
@@ -177,13 +209,7 @@ footer .img2 {
     margin-block: 40px 0px;
   }
 
-  .registrate {
-    text-align: center;
-    margin-block: 5px 80px;
-    font-size: 20px;
-    opacity: 0.9;
-
-  }
+  
 
   .registrate a {
     color: #61d4d5;
@@ -194,24 +220,35 @@ footer .img2 {
   form div input[type="password"] {
     width: 350px;
     height: 50px;
-    margin-block: 2px 60px;
+    margin-block: 2px 25px;
+    font-size: 18px;
+    border: 1px solid #cad3dc;
+  }
+
+  form div input[type="text"] {
+    width: 350px;
+    height: 50px;
+    margin-block: 2px 25px;
     font-size: 18px;
     border: 1px solid #cad3dc;
   }
 
   form div label {
     opacity: 0.9;
+    margin-bottom: 3px;
+
   }
 
-  form div input[type="password"] {
+  form div input[type="submit"] {
     padding: 10px 45px;
+    margin-top: 35px;
 
   }
 
   form+span {
     display: none;
   }
-
+  
   footer {
     display: flex;
     flex-wrap: wrap;

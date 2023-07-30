@@ -1,30 +1,58 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daran Hub</title>
+    <link rel="stylesheet" href="register.css?version=<%= Math.random() %>">
+  </head>
+  <body>
+    <main>
+      <header>
+        <img src="./assets/logo-white.png" alt="logo" />
+      </header>
+      <form action="/register" method="POST">
+        <h1 id="h1">Bienvenido</h1>
+        <p class="registrate ">ingresa el nombre por el cual se te reconocera y un codigo de acceso que solo tu conozcas.</p>
+        <div>
+          <label for="name">Nombre Visible</label>
+          <input id="name" type="text" name="name"/>
+          <label for="accescode">Codigo de acceso</label>
+          <input id="accescode" type="password" name="accesscode"/>
+          <input type="submit" value="Registrarse">
+        </div>
+      </form>
+      <p class="registrate" style="text-align: center; display: block; margin-top: 70px;"> O prefieres <a href="/login">Iniciar Sesion?</a> </p>
 
-<head>
-  <title>Login and Register</title>
-  <link rel="stylesheet" href="login.css" />
-</head>
-
-<body>
- <form action="/register" method="post">
-  <div class="pbox registerpbox"><p>Bienvenido a la pagina de registro de <a href="#"><span class="direccion">chat.daranhub.com</span></a> para registrarse coloque el nombre con el que se le vera en el chat y un codigo de acceso privado. Si ya tiene una cuenta con nosotros <a href="/login">Inicia Sesion</a></p></div>
-  <div class="inputs">
-  <input type="text"   class="ip-reg-name inputaccescode" name="name" placeholder="Nombre Visible">
-  <input type="text"   class="ip-reg-accescode inputaccescode" name="accesscode" placeholder="Codigo De Acceso">
-</div>
-  <input type="submit" class="ip-reg-submit registersubmit" value="Registrarse">
- </form>
- 
-  <div class="error-message" style="color: #fff;"><% if (error) { %><%= error %><% } %></div>
-
-
-
-
-
-
-  <script src="app.js?version=<%= Math.random() %>" type="text/javascript"></script>
-
-</body>
-<script src="app.js" type="text/javascript"></script>
+		 <% if (error) { %>
+      <%= error %>
+        <% } %>
+	</main>
+    <footer>
+      <section>
+        <ul>
+          <h2>Características</h2>
+          <li>Seguridad</li>
+          <li>Velocidad</li>
+          <li>Encriptación</li>
+        </ul>
+        <ul>
+          <h2>Legal</h2>
+          <li>Politica de privacidad</li>
+          <li>Cookies</li>
+          <li>Digital Art</li>
+        </ul>
+      </section>
+      <hr />
+      <div>
+        <img class="fLogo" src="./assets/logo-black.png" alt="" />
+        <span>
+          <img class="img1" src="./assets/world.png" alt="" />
+          <img class="img2" src="./assets/amongo.png" alt="" />
+          <img class="img1" src="./assets/discord.png" alt="" />
+        </span>
+      </div>
+    </footer>
+    <script src="register.js?version=<%= Math.random() %>" type="text/javascript"></script>
+  </body>
 </html>
